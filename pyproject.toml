@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omni-pathology"
+version = "1.0.0"
+description = "OMNI: Scaling Multi-Teacher Distillation for Digital Pathology (NeurIPS 2026)"
+readme = "README.md"
+requires-python = ">=3.10"  # minimum: Python 3.10
+license = { text = "CC-BY-NC-4.0" }
+authors = [
+    { name = "Sofiène Boutaj", email = "sofiene.boutaj@centralesupelec.fr" },
+    { name = "Pierre Marza" },
+    { name = "Varun Belagali" },
+    { name = "Dimitris Samaras" },
+    { name = "Maria Vakalopoulou" },
+    { name = "Stergios Christodoulidis" },
+]
+keywords = [
+    "computational-pathology",
+    "digital-pathology",
+    "foundation-model",
+    "knowledge-distillation",
+    "multi-teacher-distillation",
+    "mixture-of-experts",
+    "vision-transformer",
+]
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+# FlashAttention backend (train.py --attn flash_attn); needs a CUDA GPU and --no-build-isolation
+flash = ["flash-attn"]
+# Formatting
+dev = ["black"]
+
+[project.urls]
+Homepage = "https://sofiene-boutaj.github.io/omni-projectpage/"
+# Paper = "https://arxiv.org/abs/XXXX.XXXXX"  # TODO: add once the arXiv version is out
+Models = "https://huggingface.co/collections/sofieneb/omni-models"
+Datasets = "https://huggingface.co/collections/sofieneb/pathology-foundation-model-features"
+
+[tool.setuptools]
+# Top-level scripts/modules of the repository; adjust if you add or rename files
+py-modules = ["configs", "train", "write_webdataset"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]

@@ -1,0 +1,17 @@
+torch>=2.1
+torchvision
+numpy
+pillow
+opencv-python-headless
+webdataset
+tensorboard
+tqdm
+# export to Hugging Face
+safetensors
+transformers>=4.40
+# build WebDataset shards from TRIDENT / CLAM features (write_webdataset.py)
+h5py
+openslide-python
+openslide-bin
+# tile-level evaluation (eval/eval_thunder.py)
+thunder-bench
